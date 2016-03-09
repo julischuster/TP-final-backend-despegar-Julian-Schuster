@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<bean id="topRoutesReader" class="com.despegar.jav.example.TopRoutesReader" />
+	<bean id="cheapestTripGeneratorImpl" class="com.despegar.jav.service.CheapestTripGeneratorImpl" />
+	<bean id="jsonFactory" class="com.despegar.jav.json.JsonFactory" />
+
+	<bean id="world" class="com.despegar.jav.domain.World">
+		<constructor-arg ref="jsonFactory" />
+	</bean>
+
+	<bean id="helloWorldController" class="com.despegar.jav.controller.HelloWorldController">
+		<constructor-arg ref="topRoutesReader" />
+		<constructor-arg ref="cheapestTripGeneratorImpl" />
+		<constructor-arg ref="world" />
+		<constructor-arg ref="jsonFactory" />
+	</bean>
+
+
+	<bean id="webConfig" class="com.despegar.jav.WebConfig">
+		<constructor-arg ref="jsonFactory" />
+	</bean>
+
+	<context:annotation-config />
+
+</beans>

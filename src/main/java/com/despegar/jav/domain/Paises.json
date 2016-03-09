@@ -1,0 +1,197 @@
+[
+   {
+     "code": "AR",
+     "cities": [
+       {
+         "code": "BUE"
+       },
+       {
+         "code": "BRC"
+       },
+       {
+         "code": "IGR"
+       },
+       {
+         "code": "COR"
+       },
+       {
+         "code": "FTE"
+       },
+       {
+         "code": "MDZ"
+       },
+       {
+         "code": "USH"
+       },
+       {
+         "code": "EZE"
+       }
+     ]
+   },
+   {
+     "code": "BR",
+     "cities": [
+       {
+         "code": "BSB"
+       },
+       {
+         "code": "CWB"
+       },
+       {
+         "code": "SAO"
+       },
+       {
+         "code": "SSA"
+       },
+       {
+         "code": "REC"
+       },
+       {
+         "code": "RIO"
+       },
+       {
+         "code": "FOR"
+       },
+       {
+         "code": "POA"
+       },
+       {
+         "code": "MCZ"
+       },
+       {
+         "code": "FLN"
+       },
+       {
+         "code": "NAT"
+       },
+       {
+         "code": "GRU"
+       },
+       {
+         "code": "BPS"
+       },
+       {
+         "code": "JPA"
+       },
+       {
+         "code": "AJU"
+       },
+       {
+         "code": "BHZ"
+       }
+     ]
+   },
+   {
+     "code": "CL",
+     "cities": [
+       {
+         "code": "SCL"
+       },
+       {
+         "code": "IQQ"
+       }
+     ]
+   },
+   {
+     "code": "MX",
+     "cities": [
+       {
+         "code": "MEX"
+       },
+       {
+         "code": "CUN"
+       }
+     ]
+   },
+   {
+     "code": "PE",
+     "cities": [
+       {
+         "code": "LIM"
+       },
+       {
+         "code": "CUZ"
+       },
+       {
+         "code": "PIU"
+       }
+     ]
+   },
+   {
+     "code": "US",
+     "cities": [
+       {
+         "code": "MIA"
+       },
+       {
+         "code": "ORL"
+       },
+       {
+         "code": "NYC"
+       }
+    ]
+   },
+   {
+     "code": "ES",
+     "cities": [
+       {
+         "code": "MAD"
+       },
+       {
+         "code": "BCN"
+       }
+     ]
+   },
+  {
+     "code": "IT",
+     "cities": [
+       {
+         "code": "ROM"
+       }
+     ]
+   },
+   {
+     "code": "DO",
+     "cities": [
+       {
+         "code": "PUJ"
+       }
+     ]
+   },
+   {
+     "code": "CO",
+     "cities": [
+       {
+         "code": "BOG"
+       },
+       {
+         "code": "CTG"
+       },
+       {
+        "code": "ADZ"
+       },
+       {
+         "code": "SMR"
+       },
+       {
+         "code": "MDE"
+       }
+     ]
+   },
+   {
+     "code": "PT",
+     "cities": [
+       {
+         "code": "LIS"
+       }
+     ]
+   },
+   {
+     "code": "PA",
+     "cities": [
+       {
+         "code": "PTY"
+       }
+     ]
+   }
+ ]
