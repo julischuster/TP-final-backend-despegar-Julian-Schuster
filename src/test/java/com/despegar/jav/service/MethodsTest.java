@@ -10,16 +10,14 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.despegar.jav.domain.CheapPrice;
+import com.despegar.jav.domain.Items;
+import com.despegar.jav.domain.Price_detail;
 import com.despegar.jav.domain.Rental;
 import com.despegar.jav.domain.Stop;
 import com.despegar.jav.domain.Traveler;
 import com.despegar.jav.domain.World;
-import com.despegar.jav.example.TopRoute;
-import com.despegar.jav.example.TopRoutesReader;
 import com.despegar.jav.json.JsonFactory;
-import com.despegar.jav.jsonsearch.CheapPrice;
-import com.despegar.jav.jsonsearch.Items;
-import com.despegar.jav.jsonsearch.Price_detail;
 
 public class MethodsTest {
 

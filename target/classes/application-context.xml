@@ -18,7 +18,7 @@
 		<constructor-arg ref="jsonFactory" />
 	</bean>
 	
-	<bean id="topRoutesReader" class="com.despegar.jav.example.TopRoutesReader">
+	<bean id="topRoutesReader" class="com.despegar.jav.service.TopRoutesReader">
 		<constructor-arg ref="jsonFactory" />
 	</bean>
 

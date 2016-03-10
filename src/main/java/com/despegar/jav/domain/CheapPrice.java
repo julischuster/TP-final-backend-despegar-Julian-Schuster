@@ -1,9 +1,7 @@
-package com.despegar.jav.jsonsearch;
+package com.despegar.jav.domain;
 
 import java.io.Serializable;
 import java.util.List;
-
-import com.despegar.jav.domain.Flight;
 
 @SuppressWarnings("serial")
 public class CheapPrice implements Serializable {

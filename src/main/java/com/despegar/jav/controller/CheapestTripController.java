@@ -15,23 +15,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.despegar.jav.domain.Traveler;
 import com.despegar.jav.domain.World;
-import com.despegar.jav.example.TopRoutesReader;
 import com.despegar.jav.json.JsonFactory;
 import com.despegar.jav.service.CheapestRentalFinder;
 import com.despegar.jav.service.CheapestRentalGeneratorImpl;
+import com.despegar.jav.service.CheapestTripFinder;
 import com.despegar.jav.service.CheapestTripGeneratorImpl;
 import com.despegar.jav.service.Methods;
+import com.despegar.jav.service.TopRoutesFinder;
+import com.despegar.jav.service.TopRoutesReader;
 
 @Controller
 @RequestMapping("/despegar-it-jav")
 public class CheapestTripController {
 	public static final Logger LOGGER = LoggerFactory.getLogger(CheapestTripController.class);
 	
-	private TopRoutesReader topRoutesReader;
-	private CheapestTripGeneratorImpl cheapestTripGeneratorImpl;
+	private TopRoutesFinder topRoutesReader;
+	private CheapestTripFinder cheapestTripGeneratorImpl;
 	private World world;
 	private JsonFactory jsonFactory;
-	private CheapestRentalGeneratorImpl cheapestRentalGeneratorImpl;
+	private CheapestRentalFinder cheapestRentalGeneratorImpl;
 	private Methods methods;
 	
 	@Autowired

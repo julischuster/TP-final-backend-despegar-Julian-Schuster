@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import com.despegar.jav.domain.Traveler;
 import com.despegar.jav.domain.World;
 import com.despegar.jav.json.JsonFactory;
+import com.despegar.jav.service.TopRoutesReader;
 
 import static org.mockito.Mockito.*;
 

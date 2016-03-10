@@ -1,4 +1,4 @@
-package com.despegar.jav.example;
+package com.despegar.jav.service;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,14 +39,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TopRoutesReader {
+public class TopRoutesReader implements TopRoutesFinder {
 	JsonFactory jsonFactory;	
 
 	public TopRoutesReader(JsonFactory jsonFactory) {
 		this.jsonFactory = jsonFactory;
 	}
 
-	public List<TopRoute> getTopRoutes(InputStream is) {
+	public List<TopRoute> getTopRoutes(InputStream is){
 		InputStream input = null;
 		try {
 			input = TopRoutesReader.class.getResourceAsStream("top_routes.json");

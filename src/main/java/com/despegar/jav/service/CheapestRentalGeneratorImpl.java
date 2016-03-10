@@ -21,15 +21,13 @@ import org.apache.http.impl.client.HttpClients;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.despegar.jav.domain.CheapPrice;
 import com.despegar.jav.domain.Country;
 import com.despegar.jav.domain.Flight;
 import com.despegar.jav.domain.Rental;
 import com.despegar.jav.domain.Traveler;
 import com.despegar.jav.domain.World;
-import com.despegar.jav.example.TopRoute;
-import com.despegar.jav.example.TopRoutesReader;
 import com.despegar.jav.json.JsonFactory;
-import com.despegar.jav.jsonsearch.CheapPrice;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 public class CheapestRentalGeneratorImpl implements CheapestRentalFinder {

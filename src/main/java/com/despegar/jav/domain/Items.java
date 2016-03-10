@@ -1,4 +1,4 @@
-package com.despegar.jav.jsonsearch;
+package com.despegar.jav.domain;
 
 public class Items {
 		private String id;

@@ -1,4 +1,4 @@
-package com.despegar.jav.example;
+package com.despegar.jav.service;
 
 import java.io.Serializable;
 

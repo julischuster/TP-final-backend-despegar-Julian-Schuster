@@ -15,13 +15,12 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.despegar.jav.domain.CheapPrice;
 import com.despegar.jav.domain.Flight;
 import com.despegar.jav.domain.Rental;
 import com.despegar.jav.domain.Stop;
 import com.despegar.jav.domain.Traveler;
 import com.despegar.jav.domain.World;
-import com.despegar.jav.example.TopRoutesReader;
-import com.despegar.jav.jsonsearch.CheapPrice;
 
 public class Methods {
 	
@@ -54,8 +53,8 @@ public class Methods {
 	}
 	
 	
-	public Stop getNextTrip(TopRoutesReader topRoutesReader, CheapestTripGeneratorImpl cheapestTripGeneratorImpl,
-			World world, CheapestRentalGeneratorImpl cheapestRentalGeneratorImpl, Traveler traveler) throws Exception {
+	public Stop getNextTrip(TopRoutesFinder topRoutesReader, CheapestTripFinder cheapestTripGeneratorImpl,
+			World world, CheapestRentalFinder cheapestRentalGeneratorImpl, Traveler traveler) throws Exception {
 		List<String> possibleDestinations = topRoutesReader.getPossibleDestinations(traveler);
 		CheapPrice cheaptrip = null;
 		Integer cheapestprice = null;

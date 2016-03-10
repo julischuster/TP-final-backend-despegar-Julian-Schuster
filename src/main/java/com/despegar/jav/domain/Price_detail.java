@@ -1,4 +1,4 @@
-package com.despegar.jav.jsonsearch;
+package com.despegar.jav.domain;
 
 public class Price_detail {
 	private String currency;
