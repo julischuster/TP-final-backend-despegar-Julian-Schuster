@@ -2,9 +2,6 @@ package com.despegar.jav.domain;
 
 import java.math.BigDecimal;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Flight implements Priceable {

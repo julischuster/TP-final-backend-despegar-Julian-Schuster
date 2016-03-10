@@ -11,7 +11,14 @@
 	
 	<bean id="cheapestTripGeneratorImpl" class="com.despegar.jav.service.CheapestTripGeneratorImpl" />
 	<bean id="cheapestRentalGeneratorImpl" class="com.despegar.jav.service.CheapestRentalGeneratorImpl" />
-	<bean id="methods" class="com.despegar.jav.service.Methods" />
+	
+	<bean id="methods" class="com.despegar.jav.service.Methods">
+		<constructor-arg ref="cheapestTripGeneratorImpl" />
+		<constructor-arg ref="cheapestRentalGeneratorImpl" />
+		<constructor-arg ref="world" />
+		<constructor-arg ref="topRoutesReader" />
+	</bean>
+	
 	<bean id="jsonFactory" class="com.despegar.jav.json.JsonFactory" />
 
 	<bean id="world" class="com.despegar.jav.domain.World">

@@ -1,11 +1,10 @@
 package com.despegar.jav.service;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -29,12 +28,12 @@ public class MethodsTest {
 	private JsonFactory jsonFactory;
 	@Before
 	public void setUp(){
-		methods = new Methods();
 		cheapestTripGeneratorImpl = mock(CheapestTripGeneratorImpl.class);
 		cheapestRentalGeneratorImpl = mock(CheapestRentalGeneratorImpl.class);
 		topRoutesReader = mock(TopRoutesReader.class);
 		jsonFactory = new JsonFactory();
 		world = new World(jsonFactory);
+		methods = new Methods(cheapestTripGeneratorImpl, cheapestRentalGeneratorImpl, world, topRoutesReader);
 	}
 	
 	@Test
@@ -57,12 +56,11 @@ public class MethodsTest {
 		items.setStops(0);
 		cheapprice1.setItems(Arrays.asList(items));
 		Rental rental = new Rental(30, "depto");
-		when(topRoutesReader.getPossibleDestinations(traveler)).thenReturn(Arrays.asList(route1.getTo()));
+		when(methods.getPossibleDestinations(traveler)).thenReturn(Arrays.asList(route1.getTo()));
 		when(cheapestTripGeneratorImpl.tripFinder("MIA", traveler)).thenReturn(cheapprice1);
-		when(cheapestRentalGeneratorImpl.cheapestRental("MIA")).thenReturn(rental);
+		when(methods.cheapestRental("MIA")).thenReturn(rental);
 		
-		Stop stop = methods.getNextTrip(topRoutesReader, cheapestTripGeneratorImpl, world, cheapestRentalGeneratorImpl, 
-				traveler);
+		Stop stop = methods.getNextTrip(traveler);
 		
 		assertEquals(rental, stop.getRental());
 		

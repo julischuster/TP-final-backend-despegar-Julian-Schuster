@@ -1,13 +1,8 @@
 package com.despegar.jav.domain;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
-import com.despegar.jav.service.CheapestRentalGeneratorImpl;
-import com.despegar.jav.service.CheapestTripGeneratorImpl;
-import com.despegar.jav.service.TopRoutesReader;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Traveler {

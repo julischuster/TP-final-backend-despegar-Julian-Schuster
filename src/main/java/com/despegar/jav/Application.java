@@ -11,9 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.DispatcherServlet;
 
-import com.despegar.jav.service.TopRoute;
-import com.despegar.jav.service.TopRoutesReader;
-
 public class Application {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(Application.class);

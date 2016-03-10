@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,10 +28,14 @@ import com.despegar.jav.service.TopRoutesReader;
 public class CheapestTripController {
 	public static final Logger LOGGER = LoggerFactory.getLogger(CheapestTripController.class);
 	
+	@SuppressWarnings("unused")
 	private TopRoutesFinder topRoutesReader;
+	@SuppressWarnings("unused")
 	private CheapestTripFinder cheapestTripGeneratorImpl;
 	private World world;
+	@SuppressWarnings("unused")
 	private JsonFactory jsonFactory;
+	@SuppressWarnings("unused")
 	private CheapestRentalFinder cheapestRentalGeneratorImpl;
 	private Methods methods;
 	
@@ -48,19 +51,18 @@ public class CheapestTripController {
 		this.methods = methods;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/best-trip", method = {RequestMethod.GET, RequestMethod.GET})
 	@ResponseBody
-	public ResponseEntity<String> hello(@RequestParam(value = "from", required = true) String from,
+	public ResponseEntity<String> Trip(@RequestParam(value = "from", required = true) String from,
 			@RequestParam(value = "money", required = true) int money) {
 		if (StringUtils.isNotBlank(from)) {
 			from = from.toUpperCase();
 			Traveler traveler;
 			try {
 				traveler = new Traveler(money, from, world);
-				while (methods.getNextTrip(topRoutesReader, cheapestTripGeneratorImpl, world, 
-						cheapestRentalGeneratorImpl, traveler) != null) {
-					traveler = methods.doTheTrip(methods.getNextTrip(topRoutesReader, cheapestTripGeneratorImpl, world,
-							cheapestRentalGeneratorImpl, traveler), world, traveler);
+				while (methods.getNextTrip(traveler) != null) {
+					traveler = methods.doTheTrip(methods.getNextTrip(traveler), traveler);
 				}
 				return new ResponseEntity(traveler, HttpStatus.OK);
 			} catch (IllegalArgumentException e) {

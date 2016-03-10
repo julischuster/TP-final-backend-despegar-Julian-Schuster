@@ -3,6 +3,7 @@ package com.despegar.jav.domain;
 import java.io.Serializable;
 import java.util.Collection;
 
+@SuppressWarnings("serial")
 public class Country implements Serializable{
 	private String code;
 	private Collection<String> cities;

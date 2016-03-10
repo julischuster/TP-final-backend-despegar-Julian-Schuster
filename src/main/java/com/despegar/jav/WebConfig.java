@@ -3,16 +3,12 @@ package com.despegar.jav;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.core.convert.support.GenericConversionService;
-import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
-import org.springframework.http.converter.ObjectToStringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -36,13 +32,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
 		converter.setObjectMapper(this.jsonFactory.getObjectMapper());
 		converters.add(converter);
-		converters.add(new HttpMessageConverter() {
+		converters.add(new HttpMessageConverter<Object>() {
 
+			@SuppressWarnings("rawtypes")
 			@Override
 			public boolean canRead(Class clazz, MediaType mediaType) {
 				return false;
 			}
 
+			@SuppressWarnings("rawtypes")
 			@Override
 			public boolean canWrite(Class clazz, MediaType mediaType) {
 				return true;
@@ -55,6 +53,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 				return list;
 			}
 
+			@SuppressWarnings("rawtypes")
 			@Override
 			public Object read(Class clazz, HttpInputMessage inputMessage) throws IOException,
 					HttpMessageNotReadableException {

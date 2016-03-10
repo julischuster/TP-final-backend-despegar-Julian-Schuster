@@ -2,6 +2,7 @@ package com.despegar.jav.domain;
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class Rental implements Serializable{
 	private int amount;
     private String title;
