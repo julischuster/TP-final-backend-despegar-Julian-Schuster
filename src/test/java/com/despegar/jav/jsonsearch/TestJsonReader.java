@@ -12,11 +12,5 @@ import com.despegar.jav.example.TopRoute;
 import com.despegar.jav.example.TopRoutesReader;
 public class TestJsonReader {
 
-	@Test
-	public void JsonTest() throws Exception {
-		TopRoutesReader r = new TopRoutesReader();
-		InputStream m = null;
-
-	}
 	
 }

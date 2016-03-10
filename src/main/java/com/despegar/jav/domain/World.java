@@ -1,8 +1,6 @@
 package com.despegar.jav.domain;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,20 +8,25 @@ import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.despegar.jav.example.TopRoute;
-import com.despegar.jav.example.TopRoutesReader;
 import com.despegar.jav.json.JsonFactory;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.util.ISO8601Utils;
 
 public class World{
 	private List<Country> countries;
+	public List<Country> getCountries() {
+		return countries;
+	}
+
+	public void setCountries(List<Country> countries) {
+		this.countries = countries;
+	}
+
+	@SuppressWarnings("unused")
 	private JsonFactory jsonFactory;
 	
 	public World(JsonFactory jsonFactory){
 		this.jsonFactory = jsonFactory;
 		InputStream input = World.class.getResourceAsStream("Paises.json");		
+		@SuppressWarnings("resource")
 		String json = new Scanner(input,"UTF-8").useDelimiter("\\A").next();
 		this.countries = getCountries(json);
 	}

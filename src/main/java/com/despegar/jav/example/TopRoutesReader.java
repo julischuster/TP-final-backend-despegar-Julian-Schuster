@@ -7,6 +7,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.management.RuntimeErrorException;
+
 import org.omg.CORBA.NameValuePair;
 import org.springframework.http.HttpEntity;
 
@@ -38,38 +40,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TopRoutesReader {
+	JsonFactory jsonFactory;	
 
-	public static void main(String[] args) {
-		TopRoutesReader reader = new TopRoutesReader();
-		Traveler traveler = new Traveler(500, "BUE", "AR");
-		InputStream is = null;
-		System.out.println(reader.getPossibleDestinations(traveler).size());
-		
+	public TopRoutesReader(JsonFactory jsonFactory) {
+		this.jsonFactory = jsonFactory;
 	}
 
 	public List<TopRoute> getTopRoutes(InputStream is) {
-		JsonFactory jsonFactory = new JsonFactory();
-		InputStream input = TopRoutesReader.class.getResourceAsStream("top_routes.json");
-		return jsonFactory.fromJson(new InputStreamReader(input), new TypeReference<List<TopRoute>>() {
-		});
+		InputStream input = null;
+		try {
+			input = TopRoutesReader.class.getResourceAsStream("top_routes.json");
+		} catch (NullPointerException e) {
+			throw e;
+		}
+		try {
+			return jsonFactory.fromJson(new InputStreamReader(input), new TypeReference<List<TopRoute>>() {
+			});
+		} catch (RuntimeException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
-	
-	public List<String> getPossibleDestinations(Traveler traveler) {
+
+	public List<String> getPossibleDestinations(Traveler traveler) throws NullPointerException {
 		InputStream json = conectar(traveler);
-		List<TopRoute> topRoutes = getTopRoutes(json);
+		List<TopRoute> topRoutes;
+		try {
+			topRoutes = getTopRoutes(json);
+			
+		} catch (RuntimeException e) {
+			throw e;
+		}
+
 		List<String> possibleDestinations = new ArrayList();
 		for (TopRoute route : topRoutes) {
 			if (route.getFrom().compareTo(traveler.getHereCity()) == 0) {
 				possibleDestinations.add(route.getTo());
 			}
 		}
-		System.out.println(possibleDestinations.size());
 		return possibleDestinations;
 	}
 
 	public static InputStream conectar(Traveler viajero) {
 		HttpClient httpclient = HttpClientBuilder.create().build();
-		//TODO hacer url para aca que no tenemos el servicio
+		// TODO hacer url para aca que no tenemos el servicio
 		HttpGet httpget = new HttpGet("top_routes.json");
 		InputStream is = ejecutarConsulta(httpclient, httpget);
 		return is;
@@ -86,9 +100,9 @@ public class TopRoutesReader {
 		}
 		return null;
 	}
-	
-//	public InputStream traerJson(){
-//		Traveler traveler = new Traveler(500, new City("Buenos Aires", "BUE"));
-//		conectar(traveler, new City(""));
-//	}
+
+	// public InputStream traerJson(){
+	// Traveler traveler = new Traveler(500, new City("Buenos Aires", "BUE"));
+	// conectar(traveler, new City(""));
+	// }
 }
