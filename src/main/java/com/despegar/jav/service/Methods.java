@@ -72,6 +72,7 @@ public class Methods {
 		Integer cheapestprice = null;
 		String variableCity = null;
 		Rental rental = null;
+		Stop stop = null;
 		try {
 			for (String cityTo : possibleDestinations) {
 				LOGGER.info(cityTo + " es la posible ciudad ciudad");
@@ -91,6 +92,9 @@ public class Methods {
 								variableCity = cityTo;
 								cheapestprice = cheaptrip.getItems().get(0).getPrice_detail().getTotal();
 								rental = cheapestRental(cityTo);
+								Flight flight = new Flight(new BigDecimal(cheaptrip.getItems().get(0).getPrice_detail().getTotal()),
+										cheaptrip.getItems().get(0).getAirline());
+								stop = new Stop(variableCity, flight, rental);
 							} else if ((cheaptrip.getItems().get(0).getPrice_detail().getTotal()
 									+ rental.getAmount()) > (cheapestTripGeneratorImpl.tripFinder(cityTo, traveler)
 											.getItems().get(0).getPrice_detail().getTotal()
@@ -99,6 +103,9 @@ public class Methods {
 								variableCity = cityTo;
 								cheapestprice = cheaptrip.getItems().get(0).getPrice_detail().getTotal();
 								rental = cheapestRental(cityTo);
+								Flight flight = new Flight(new BigDecimal(cheaptrip.getItems().get(0).getPrice_detail().getTotal()),
+										cheaptrip.getItems().get(0).getAirline());
+								stop = new Stop(variableCity, flight, rental);
 							}
 						}
 					}
@@ -106,13 +113,6 @@ public class Methods {
 			}
 		} catch (Exception e) {
 			throw e;
-		}
-
-		Stop stop = null;
-		if (cheaptrip != null) {
-			Flight flight = new Flight(new BigDecimal(cheaptrip.getItems().get(0).getPrice_detail().getTotal()),
-					cheaptrip.getItems().get(0).getAirline());
-			stop = new Stop(variableCity, flight, rental);
 		}
 		return stop;
 	}
